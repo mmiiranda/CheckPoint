@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=s, initial-scale=1.0">
+    <title id="pageTitle">CheckPoint</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav onclick="RegistAside.open()">Regist</nav>
+    <div class="content">
+        <div class="logo">CheckPoint</div>
+        <div class="main">
+            <input type="button" value="BEGIN" id="btnBegin" onclick="CardForm.show()"> 
+        </div>
+    </div>
+    <div class="card-form">
+        <div class="card-text">
+            <input type="text" name="inputName" id="inputName" autocomplete="off" placeholder="Task Name" maxlength="30">
+        </div>
+        <div class="card-buttons">
+            <input type="button" value="Cancel" onclick="CardForm.close()">
+            <input type="button" value="Confirm" onclick="start()">
+        </div>
+    </div>
+    <div class="regist-aside">
+        <h2>Registry</h2>
+        <div class="regist-content"></div>
+        <div class="regist-buttons">
+            <a href="#" onclick="RegistAside.close()">Close</a>
+        </div>
+    </div>
+    <div class="confirm-mensage">Saved Successfully!</div>
+    <div class="modal-overlay">
+        <div class="modal">
+            <h2>Do you want end?</h2>
+            <div class="modal-buttons">
+                <input type="button" class="cancel" value="Nah" onclick="Modal.close()">
+                <input type="button" value="Yeah" onclick="DOM.end()">
+            </div>
+        </div>
+    </div>
+    <div class="modal-overlay  paused">
+        <h1>Paused</h1>
+        <div class="pausedInfo"></div>
+        <input type="button" value="Continue" class="returnBtn" onclick="Modal.closePaused()">
+    </div>
+    <div class="loader"></div>
+    <script src="script.js"></script>
+</body>
+</html>
