@@ -1,0 +1,636 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: verdana;
+    font-weight: bold;
+}
+
+html{
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+body{
+    min-height: 100vh;
+    background-color: black;
+    color: white;
+}
+
+nav{
+    position: fixed;
+
+    top: 5%;
+    right: 5%;
+
+    color: #b1b1b1;
+    cursor: pointer;
+
+    transition: ease-in .2s;
+}
+
+nav:hover{
+    color: #fff;
+}
+
+nav::before{
+    content: "";
+    position: absolute;
+
+    bottom: -.25rem;
+
+    width: 0;
+    height: .25rem;
+
+    background-color: #9e1086;
+
+    transition: ease-in .2s;
+}
+
+nav:hover::before{
+    width: 100%;
+}
+
+body .content{
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.logo{
+    position: relative;
+
+    color: black;
+    background: linear-gradient(#FFF, #9e1086);
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    font-weight: bold;
+    font-size: 3rem;
+
+    transition: ease-in-out .3s;
+
+    cursor: context-menu;
+
+    animation: aa 2s infinite;
+}
+
+.logo::before{
+    content: "CheckPoint";
+    position: absolute;
+
+    color: black;
+    background: linear-gradient(-90deg, #FFF, #ff53e2,#ffffff ,#FFF);
+	background-size: 400% 400%;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    font-weight: bold;
+    font-size: 3rem;
+
+    transition: ease-in-out .2s;
+
+    cursor: context-menu;
+
+    animation: logo 30s infinite;
+}
+
+.logo:hover::before{
+    transform: translateY(-.25rem);
+}
+
+@keyframes logo{
+	0%{
+        background-position: 0% 50%;
+    }
+	16%{
+        background-position: 0% 50%;
+    }
+    20% {
+		background-position: 100% 50%;
+	}
+	26% {
+        background-position: 0% 50%;
+	}
+    100%{
+		background-position: 0% 50%;
+    }
+}
+
+.task-content{
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+
+    padding: .75rem;
+
+    font-weight: bold;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+.task-content.active::after{
+    content: '';
+
+    position: absolute;
+    bottom: -1%;
+    left: 0;
+
+    width: 100%;
+    height: .25rem;
+
+    background-color: #ff85eb;
+
+    animation: run 2.5s infinite;
+}
+
+
+@keyframes run{
+    from{
+        transform: translateX(-100%);  
+    }
+    to{
+        transform: translateX(100%);
+        background-color: #a10087;
+    }
+}
+
+.task-content .task-time-mural{
+    display: flex;
+
+    gap: 7.75rem;
+
+    align-items: center;
+    justify-content: center;
+} 
+
+.task-content .task-time-mural .task-time{
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+
+    font-size: 1.5rem;
+}
+
+.task-content .task-time-mural .task-time h3{
+    font-size: 1.2rem;
+
+    position: relative;
+
+    cursor: context-menu;
+}
+
+.task-content .task-time-mural .task-time h3 :not(:hover){
+    opacity: .8;
+}
+
+.task-content .task-time-mural .task-time h3:after{
+    content: "";
+
+    top: 110%;
+    left: 0;
+    width: 100%;
+    position: absolute;
+    height: .35rem;
+
+    background-color: #9e1086;
+
+    transition: linear .2s;
+
+    transform: translateY(.5rem);
+    opacity: 0;
+}
+
+.task-content .task-time-mural .task-time h3:hover::after{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.task-content .task-time-mural .task-buttons{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.task-content .task-time-mural .task-buttons input{
+    background-color: black;
+    color: #BF12A3;
+
+    border: #BF12A3 solid .2rem;
+    border-radius: .25rem;
+
+    padding: .35rem .855rem;
+
+    cursor: pointer;
+
+    transition: ease-in-out .25s;
+}
+
+.task-content .task-time-mural .task-buttons input:hover{
+    background-color: #BF12A3;
+    color: white;
+
+    box-shadow: 1px 1px 3px #54244C;
+}
+
+#btnBegin{
+    position: relative;
+
+    background: linear-gradient(354.54deg,#54244C 0%, #BF12A3 50%);
+    color: white;
+
+    padding: .35rem .75rem;
+    font-size: 1.2rem;
+
+    border: none;
+    border-radius: .5rem;
+
+    transition: ease-in .2s;
+
+    cursor: pointer;
+    outline: none;
+}
+
+#btnBegin:hover{
+    box-shadow: 1px 1px 10px #BF12A3;
+}
+
+.card-form{
+    position: fixed;
+    top: 80%;
+    right: 10%;
+
+    background-color: #222222;
+    
+    height: 20%;
+    padding: 1rem .75rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+
+    transform: translateY(105%);
+
+    transition: ease-in-out .3s;
+}
+
+.card-form:focus-within{
+    box-shadow: 1px 1px 10px #BF12A3;
+}
+
+.card-form .card-text input{
+    padding: .3rem .5rem;
+
+    border: .15rem solid #d317b3;
+    outline: none;
+}
+
+.card-form .card-buttons{
+    display: flex;
+    justify-content: space-between;    
+}
+
+.card-form .card-buttons input{
+    background: #BF12A3;
+    color: #fff;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    padding: .35rem .5rem;
+
+    /* border-radius: .5rem; */
+    border: none;
+    outline: none;
+}
+
+.card-form .card-buttons input:hover{
+    background: #9e1086;
+    color: rgb(218, 218, 218);
+}
+
+.card-form.active{
+    transform: translateY(0);
+}
+
+.regist-aside{
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    background-color: #222222;
+
+    height: 100%;
+    width: 27.5%;
+
+    padding: .75rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    transform: translateX(100%);
+
+    transition: ease-in-out .3s;
+}
+
+.regist-aside.active{
+    transform: translateX(0);
+}
+
+.regist-aside .regist-content .card-regist{
+    position: relative;
+    
+    background-color: #fff;
+
+    padding: .25rem .75rem;
+
+    border: solid 1px #b951ab;
+    border-radius: .35rem;
+
+    display: flex;
+    flex-direction: column;
+
+    cursor: pointer;
+
+    transition: ease-in .15s;
+}
+
+.regist-aside .regist-content .card-regist:hover{
+    background-color: #ffe9fb;
+
+    box-shadow: 1px 1px 10px #9e1086;
+}
+
+.regist-aside .regist-content{
+    display: flex;
+    flex-direction: column-reverse;
+
+    gap: 1.5rem;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding: .5rem 0;
+}
+
+.regist-aside .card-regist .card-regist-title{
+    background-color: #ff00d4;
+    color: white;
+
+    border-radius: 1rem;
+
+    text-align: center;
+
+    padding: .15rem;
+
+    transform: translateY(-40%);
+}
+
+.regist-aside .card-regist .card-regist-content{
+    color: black;
+
+    text-align: center;
+    transform: translateY(-10%);
+
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+
+    /* width: 50%; */
+}
+
+.regist-aside .card-regist .card-regist-content .card-regist-data{
+    font-size: .9rem;
+}
+
+.regist-aside .card-regist .card-regist-footer{
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+
+    color: #ff00d4;
+
+    font-size: 1.25rem;
+}
+
+.regist-aside .regist-buttons{
+    display: flex;
+    text-align: center;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.regist-aside .regist-buttons a{
+    background-color: #222222;
+    color: #b1b1b1;
+    text-decoration: none;
+
+    transition: ease-in-out .2s;
+
+    position: relative;
+}
+
+.regist-aside .regist-buttons a:hover{
+    color: #fff;
+}
+
+.regist-aside .regist-buttons a::after{
+    content: "";
+
+    position: absolute;
+    bottom: -.25rem;
+    right: 0;
+
+    width: 0;
+    height: .25rem;
+
+    background-color: #BF12A3; 
+    
+    transition: ease-in-out .2s;
+}
+
+.regist-aside .regist-buttons a:hover::after{
+    width: 100%;
+    color: #fff;
+}
+
+.loader.active{
+    position: fixed;
+    height: 100%;       
+    width: 2rem;
+
+    background: #BF12A3;
+
+    top: 0;
+
+    animation: loader .75s forwards;
+}
+
+@keyframes loader{
+    25%{
+        width: 100%;
+    }
+    77%{
+        width: 100%;
+        right: 0;
+    }
+    100%{
+        width: 0;
+        right: 0;
+    }
+}
+
+.confirm-mensage.active{
+    position: fixed;
+    top: 0;
+
+    width: 100%;
+    text-align: center;
+
+    font-size: 1.5rem;
+
+    transform: translateY(-100%);
+
+    animation: confirm-mensage 2s;
+}
+
+@keyframes confirm-mensage{
+    30%{
+        transform: translateY(100%);
+    }
+    50%{
+        transform: translateY(100%);
+    }
+    90%{
+        transform: translateY(-100%);
+    }
+}
+
+.modal-overlay{
+    position: fixed;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.603);
+
+    display: grid;
+    place-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal-overlay.active{
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-overlay .modal{
+    background-color: #222222;
+
+    padding: .75rem;
+
+    min-width: 30%;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 2.5rem;
+}
+
+.modal .modal-buttons{
+    display: flex;
+
+    gap: 2rem;
+}
+
+.modal .modal-buttons input{
+    width: 100%;
+
+    padding: .5rem .25rem;
+    
+    background: linear-gradient(354deg , #e114b5, #9e1086);
+    color: white;
+
+    font-size: 1rem;
+
+    border: none;
+
+    transition: ease-in-out .2s;
+
+    opacity: .6;
+}
+
+.modal .modal-buttons input.cancel{
+    border: #54244C solid .25rem;
+
+    background: transparent;
+
+    position: relative;
+}
+
+.modal .modal-buttons input.cancel:hover{
+    background-color: #da2929;
+    border: #da2929 solid .25rem;
+}
+
+.modal .modal-buttons input:hover{    
+    opacity: 1; 
+}
+
+.modal-overlay .pausedInfo{
+    display: flex;
+    flex-direction: column;
+
+    gap: .5rem;
+
+    font-size: 1.35rem;
+}
+
+.modal-overlay .returnBtn{
+    background: linear-gradient(354.54deg,#54244C 0%, #BF12A3 50%);
+    color: white;
+
+    padding: .4rem .75rem;
+    font-size: 1.2rem;
+
+    border: none;
+    border-radius: .85rem;
+
+    transition: ease-in .2s;
+
+    cursor: pointer;
+    outline: none;
+}
+
+.modal-overlay .returnBtn:hover{
+    border-radius: .5rem;
+    box-shadow: 1px 1px 10px #9e1086;
+}
+
+@media(max-width: 1000px){
+    html{
+        font-size: 85%;
+    }
+    .regist-aside{
+        width: 90%;
+    }
+}
